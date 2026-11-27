@@ -1840,6 +1840,9 @@ body.page-resume #resume .section-inner { width: min(1060px, 100%); }
 }
 .wo-f + .wo-f { border-left: 1px solid rgba(58, 90, 128, 0.18); }
 .wo-f.wo-f-full { grid-column: 1 / -1; border-left: none; }
+/* a field row is a flex box, which would otherwise win over the hidden
+   attribute's own display: none */
+.wo-f[hidden] { display: none; }
 .wo-f label {
   font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--slate);

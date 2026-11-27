@@ -2446,6 +2446,17 @@
 
      While the key is blank the form still works — it hands the finished
      message to the reader's own mail app instead, and says so. */
+  /* What the Re line offers. The select is built from this, so the list is
+     edited here rather than in the markup. `open: true` marks the option
+     that asks the reader to write the subject themselves instead of
+     choosing a canned one; more than one may carry it. */
+  var CONTACT_RE = [
+    { label: "A role" },
+    { label: "A collaboration" },
+    { label: "A hackathon team" },
+    { label: "Mentorship" },
+    { label: "Something else", open: true }
+  ];
   var CONTACT_TO = "mehtasvarav@gmail.com";
   var CONTACT_KEY = "b84b5a44-71e8-40b8-b77c-b0fea1f51e1d";
   var CONTACT_API = "https://api.web3forms.com/submit";
@@ -2459,6 +2470,8 @@
         nameEl = $("#wo-name"),
         mailEl = $("#wo-email"),
         reEl = $("#wo-re"),
+        otherEl = $("#wo-other"),
+        otherF = $("#wo-other-f"),
         msgEl = $("#wo-msg"),
         botEl = $("#wo-botcheck"),
         posting = false;
@@ -2478,28 +2491,61 @@
     }
 
     // clear a field's warning as soon as the reader starts fixing it
-    [nameEl, mailEl, msgEl].forEach(function (el) {
-      el.addEventListener("input", function () { flag(el, false); });
+    [nameEl, mailEl, msgEl, otherEl].forEach(function (el) {
+      if (el) el.addEventListener("input", function () { flag(el, false); });
     });
+
+    /* The Re options are built from CONTACT_RE rather than written into the
+       markup, so the list is changed in one place. */
+    function fillRe() {
+      var html = "";
+      CONTACT_RE.forEach(function (o) {
+        html += '<option value="' + wkEsc(o.label) + '">' + wkEsc(o.label) + '</option>';
+      });
+      reEl.innerHTML = html;
+    }
+
+    // whether the chosen option wants a subject written out
+    function reIsOpen() {
+      var o = CONTACT_RE[reEl.selectedIndex];
+      return !!(o && o.open);
+    }
+
+    /* "Something else" is not a subject line, so choosing it opens a field
+       to say what it actually is. Anything else keeps the row closed, and
+       closing it clears what was typed so a stale subject cannot be sent. */
+    function syncOther() {
+      var open = reIsOpen();
+      if (otherF) otherF.hidden = !open;
+      if (!open && otherEl) { otherEl.value = ""; flag(otherEl, false); }
+    }
+
+    reEl.addEventListener("change", syncOther);
 
     function check() {
       var name = nameEl.value.trim(),
           mail = mailEl.value.trim(),
           msg = msgEl.value.trim(),
+          open = reIsOpen(),
+          other = otherEl ? otherEl.value.trim() : "",
           mailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail),
           first = null;
 
       flag(nameEl, !name);
       flag(mailEl, !mailOk);
       flag(msgEl, !msg);
+      if (otherEl) flag(otherEl, open && !other);
 
       if (!name) first = "Who is this from?";
       else if (!mail) first = "I need an address to reply to.";
       else if (!mailOk) first = "That return address does not look right.";
+      else if (open && !other) first = "What is it about?";
       else if (!msg) first = "Add a line or two about what you need.";
 
       if (first) { say(first, "warn"); return null; }
-      return { name: name, email: mail, subject: reEl.value, message: msg };
+      // a written-in subject stands in for the option that asked for it
+      return { name: name, email: mail,
+               subject: open ? other : reEl.value, message: msg };
     }
 
     function openMail(d) {
@@ -2546,6 +2592,7 @@
       }).then(function (r) {
         if (!r.ok) throw new Error(r.body.message || "rejected");
         form.reset();
+        syncOther();
         say("Sent. I will come back to you within two working days.", "good");
       }).catch(function () {
         // never lose what they wrote — hand it to their mail app instead
@@ -2563,6 +2610,7 @@
       // the honeypot is invisible and off-screen: only a bot ticks it
       if (botEl && botEl.checked) {
         form.reset();
+        syncOther();
         say("Sent. I will come back to you within two working days.", "good");
         return;
       }
@@ -2571,6 +2619,8 @@
       if (CONTACT_KEY) { viaPost(d); } else { viaMail(d); }
     });
 
+    fillRe();
+    syncOther();
     say(RESTING);
   }
 
