@@ -2447,7 +2447,7 @@
      While the key is blank the form still works — it hands the finished
      message to the reader's own mail app instead, and says so. */
   var CONTACT_TO = "mehtasvarav@gmail.com";
-  var CONTACT_KEY = "";
+  var CONTACT_KEY = "b84b5a44-71e8-40b8-b77c-b0fea1f51e1d";
   var CONTACT_API = "https://api.web3forms.com/submit";
 
   function initContactForm() {
