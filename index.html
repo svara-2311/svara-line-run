@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Svara Mehta — Product Manager, robotics and industrial automation</title>
+  <meta name="description" content="Svara Mehta — Product Manager bringing robotics and industrial automation to life. A portfolio presented as engineering drawing sheets." />
+  <meta name="theme-color" content="#FAF8F3" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='3' fill='%23FAF8F3'/%3E%3Crect x='5' y='5' width='22' height='22' fill='none' stroke='%233A5A80' stroke-width='1.5'/%3E%3Crect x='8' y='8' width='16' height='16' fill='none' stroke='%239FB3C8' stroke-width='1'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="svara.css?v=1795788061" />
+  <script src="route-data.js?v=1795788061" defer></script>
+  <script src="work-data.js?v=1795788061" defer></script>
+  <script src="svara.js?v=1795788061" defer></script>
+</head>
+<body class="page-home">
+  <div id="root" hidden></div>
+
+  <!-- backdrop scene -->
+  <canvas id="scene" class="scene-canvas" data-testid="scene-canvas" aria-hidden="true"></canvas>
+
+  <!-- sheet furniture -->
+  <div class="sheet-border" aria-hidden="true"><div class="sheet-border-inner"></div></div>
+  <div class="sheet-grid" aria-hidden="true" data-testid="sheet-grid">
+    <div class="sg sg-top"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div>
+    <div class="sg sg-bottom"><span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span></div>
+    <div class="sg sg-left"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+    <div class="sg sg-right"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+  </div>
+
+  <!-- fixed chrome -->
+  <div class="progress" data-testid="progress-line"><span id="progress-fill" data-testid="progress-fill"></span></div>
+
+  <nav class="edge-nav" data-testid="edge-nav" aria-label="Sections">
+    <a href="#hero" data-testid="nav-link-home">Home</a>
+    <a href="#blueprint" data-testid="nav-link-about">About</a>
+    <a href="#route" data-testid="nav-link-route">Route</a>
+    <a href="#shop-floor" data-testid="nav-link-work">Work</a>
+    <a href="resume.html" data-testid="nav-link-resume">R&eacute;sum&eacute;</a>
+    <a href="#off-shift" data-testid="nav-link-lately">Off-shift</a>
+    <a href="#on-call" data-testid="nav-link-contact">Contact</a>
+  </nav>
+
+  <div class="title-block" data-testid="title-block">
+    <div class="tb-cell"><span class="tb-k">Drawn by:</span> S. Mehta</div>
+    <div class="tb-cell"><span class="tb-k">Dwg No:</span> 2026-PM-01</div>
+    <div class="tb-cell"><span class="tb-k">Sheet:</span> <span id="sheet-no" data-testid="sheet-number">1</span> of 6</div>
+    <div class="tb-cell"><span class="tb-k">Rev:</span> A</div>
+    <div class="tb-cell"><span class="tb-k">Scale:</span> NTS</div>
+    <div class="tb-cell"><span class="tb-k">Status:</span> As Built</div>
+  </div>
+
+  <div class="legend" data-testid="legend">
+    <button class="legend-toggle" id="legend-toggle" data-testid="legend-toggle" aria-expanded="false">Key<span class="legend-caret">+</span></button>
+    <div class="legend-panel" id="legend-panel" data-testid="legend-panel" hidden>
+      <div class="lg-row"><span class="lg-sw sw-heavy"></span>Silhouette</div>
+      <div class="lg-row"><span class="lg-sw sw-med"></span>Object edge</div>
+      <div class="lg-row"><span class="lg-sw sw-hair"></span>Detail &amp; dimension</div>
+      <div class="lg-row"><span class="lg-sw sw-dash"></span>Hidden feature</div>
+      <div class="lg-row"><span class="lg-sw sw-accent"></span>Active section</div>
+    </div>
+  </div>
+
+  <main>
+    <section id="hero" class="section hero" data-testid="hero-section">
+      <div class="hero-inner">
+        <h1 class="hero-name" data-testid="hero-name">Hi,<br>I&rsquo;m Svara.</h1>
+        <p class="hero-type" data-testid="hero-typewriter"><span id="type-text"></span><span class="type-cursor" aria-hidden="true"></span></p>
+        <p class="hero-line" data-testid="hero-line-1">Product Manager bringing <a href="#shop-floor" data-testid="hero-link-work">robotics and industrial automation</a> to life.</p>
+        <p class="hero-line" data-testid="hero-line-2">Off the clock, I wander through <a href="https://asthegroundtruth.substack.com" target="_blank" rel="noopener" data-testid="hero-link-news">deep tech&rsquo;s other corners</a>.</p>
+        <div class="hero-ic" data-testid="hero-links">
+          <a class="hic" href="resume.html" data-testid="hero-ic-resume">
+            <svg class="hic-m" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7z M14 3v4h4 M9 12h6M9 16h5"/></svg>R&eacute;sum&eacute;
+          </a>
+          <a class="hic" href="#on-call" data-testid="hero-ic-contact">
+            <svg class="hic-m" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.4" y="5.2" width="19.2" height="13.6" rx="1"/><path d="M2.4 6.2 12 13.4l9.6-7.2"/></svg>Contact
+          </a>
+          <a class="hic" href="https://www.linkedin.com/in/svara-mehta" target="_blank" rel="noopener" data-testid="hero-ic-linkedin">
+            <svg class="hic-m hic-m-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn
+          </a>
+        </div>
+      </div>
+      <p class="scroll-hint" data-testid="scroll-hint">Scroll the line.</p>
+    </section>
+    <section id="blueprint" class="section" data-testid="section-blueprint">
+      <div class="section-inner bp-inner">
+        <div class="bp-head">
+          <p class="callout">Blueprint</p>
+          <h2>About</h2>
+          <p class="lead-line" data-testid="blueprint-lead">Product manager, building through a techno-commercial lens.</p>
+        </div>
+
+        <div class="bp-grid">
+          <div class="bp-block" data-testid="bp-block-1">
+            <h3>Machines came first.</h3>
+            <p>Formula Student taught me how a machine works. Every design decision showed up as a part I could hold, with a weight, a price and a reason to exist. Engineering management taught me what that part costs over its whole life. Now I ask both questions of everything: what am I optimizing for, and who pays for it?</p>
+          </div>
+          <div class="bp-block" data-testid="bp-block-2">
+            <h3>Industrial data science was the way in.</h3>
+            <p>I built a digital twin of a refinery and argued over how its data should travel. I tuned a remaining-useful-life model, where the real decision was what the optimizer should minimize. These were among the first instances where a software decision changed what a machine did, not just what a dashboard said about it.</p>
+          </div>
+          <div class="bp-block" data-testid="bp-block-3">
+            <h3>Robotics is where it led.</h3>
+            <p>At Applied Materials I build robotic systems for semiconductor fabs. I start with what the hardware can actually do and match it to a customer problem worth solving. Then I carry it through specs and pilots, building toward go to market in a Tier-1 fab.</p>
+          </div>
+          <div class="bp-block" data-testid="bp-block-4">
+            <h3>I learn by building.</h3>
+            <p>I build a small version of everything I care about: AI retrieval, evals and memory, a robot in simulation, a venture community. Each one shows me which part is actually hard, and it’s rarely the part I expected.</p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="route" class="section" data-testid="section-route">
+      <div class="section-inner">
+        <p class="callout">The Route</p>
+        <h2>Where I&rsquo;ve been</h2>
+
+        <div class="rt" id="route-map" data-testid="route-map"></div>
+      </div>
+    </section>
+
+    <section id="shop-floor" class="section" data-testid="section-shop-floor">
+      <div class="section-inner">
+        <p class="callout">Shop Floor</p>
+        <h2>Selected Work</h2>
+        <div class="worklist" id="work-list" data-testid="work-list"></div>
+        <a class="btn-see-all" href="work.html" data-testid="see-all-work">See all work <span class="arr" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </section>
+
+
+    <section id="off-shift" class="section" data-testid="section-off-shift">
+      <div class="section-inner">
+        <p class="callout">Five To Nine</p>
+        <h2>Off-shift</h2>
+        <p class="sub">What I build outside the job.</p>
+        <p class="sub-note">Three things I keep coming back to: tinkering with AI, putting robots through physics, writing and building community.</p>
+      </div>
+
+      <!-- a conveyor: the cards travel, and whatever reaches the middle is
+           held and read out before the belt moves on. It can be dragged or
+           swiped along too, and picks the travel back up when let go. -->
+      <div class="belt-wrap" data-testid="belt">
+        <div class="belt" id="belt" data-testid="belt-track" role="list"></div>
+        <div class="belt-rail" aria-hidden="true"></div>
+      </div>
+
+      <div class="section-inner">
+        <aside class="pieces" data-testid="pieces">
+          <div class="piece" data-testid="piece-coffee">
+            <svg viewBox="0 0 64 64" class="glyph"><path d="M18 26 h24 v14 a10 10 0 0 1 -10 10 h-4 a10 10 0 0 1 -10 -10 Z" class="g-med"/><path d="M42 29 h5 a4 4 0 0 1 0 9 h-5" class="g-med"/><path d="M25 20 c0 -3 3 -3 3 -6 M33 20 c0 -3 3 -3 3 -6" class="g-hair"/></svg>
+            <p class="p-line"><span class="p-tag">Coffee</span>Hunting the best mocha in every city I visit.</p>
+          </div>
+          <div class="piece" data-testid="piece-travel">
+            <svg viewBox="0 0 64 64" class="glyph"><circle cx="32" cy="32" r="17" class="g-med"/><path d="M15 28 c6 -4 10 2 16 -2 c5 -3 10 0 14 -4 M22 42 c4 -2 8 2 13 0 c4 -2 8 1 11 -3 M28 16 c3 2 7 1 9 4" class="g-hair"/></svg>
+            <p class="p-line"><span class="p-tag">Travel</span>Twenty countries before I turned twenty.</p>
+          </div>
+          <div class="piece" data-testid="piece-dance">
+            <svg viewBox="0 0 64 64" class="glyph"><circle cx="32" cy="12" r="5" class="g-med"/><path d="M32 17 v15" class="g-med"/><path d="M32 22 h-14 v6 M32 22 h14 v6" class="g-med"/><path d="M32 32 l-10 10 v11 M32 32 l10 8 l-4 9" class="g-med"/><path d="M16 53 h12 M34 51 h10" class="g-med"/><path d="M10 58 h44" class="g-hair"/></svg>
+            <p class="p-line"><span class="p-tag">Bharatanatyam</span>Improvement is small corrections, repeated until they hold.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="on-call" class="section" data-testid="section-on-call">
+      <div class="section-inner">
+        <p class="callout">On Call</p>
+        <h2>Contact</h2>
+        <p class="lead-line" data-testid="oncall-lead">Open to collaborations, conversations, and weekend hackathon teams. I&rsquo;d love to compare notes on robotics, deep tech, or whatever you&rsquo;ve been tinkering with.</p>
+
+        <div class="oc-body">
+          <form class="wo" id="wo-form" novalidate data-testid="contact-form">
+            <div class="wo-head">
+              <span class="wo-t">Work order</span>
+              <span class="wo-no">Form 2026-PM-01</span>
+            </div>
+
+            <div class="wo-grid">
+              <p class="wo-f">
+                <label for="wo-name">From</label>
+                <input id="wo-name" name="name" type="text" autocomplete="name" placeholder="Your name" data-testid="wo-name" />
+              </p>
+              <p class="wo-f">
+                <label for="wo-email">Return address</label>
+                <input id="wo-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" data-testid="wo-email" />
+              </p>
+              <p class="wo-f wo-f-full">
+                <label for="wo-re">Re</label>
+                <select id="wo-re" name="subject" data-testid="wo-re">
+                  <option>A role</option>
+                  <option>A collaboration</option>
+                  <option>A hackathon team</option>
+                  <option>Mentorship</option>
+                  <option>Something else</option>
+                </select>
+              </p>
+              <p class="wo-f wo-f-full">
+                <label for="wo-msg">Brief</label>
+                <textarea id="wo-msg" name="message" rows="5" placeholder="Hi Svara, I'm [name] at [company]. I'd like to talk about [what]." data-testid="wo-msg"></textarea>
+              </p>
+            </div>
+
+            <input type="checkbox" name="botcheck" id="wo-botcheck" class="wo-bot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="wo-foot">
+              <button type="submit" class="wo-send" data-testid="wo-send">Send work order <span class="arr">&rarr;</span></button>
+              <p class="wo-note" id="wo-note" data-testid="wo-note" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+
+          <div class="direct" data-testid="contact-links">
+            <p class="direct-t">Direct lines</p>
+            <div class="dgrid">
+              <a class="dbox" href="mailto:mehtasvarav@gmail.com" data-testid="link-email">
+                <svg class="db-m" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.4" y="5.2" width="19.2" height="13.6" rx="1"/><path d="M2.4 6.2 12 13.4l9.6-7.2"/></svg>
+                <span class="db-k">Email</span>
+              </a>
+              <a class="dbox" href="https://www.linkedin.com/in/svara-mehta" target="_blank" rel="noopener" data-testid="link-linkedin">
+                <svg class="db-m db-m-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                <span class="db-k">LinkedIn</span>
+              </a>
+              <a class="dbox" href="https://github.com/svara-2311" target="_blank" rel="noopener" data-testid="link-github">
+                <svg class="db-m db-m-fill" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.1 4.9 18.1 5.2 18.1 5.2c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+                <span class="db-k">GitHub</span>
+              </a>
+              <a class="dbox" href="resume.html" data-testid="link-resume">
+                <svg class="db-m" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19 19 5M9.4 5H19v9.6"/></svg>
+                <span class="db-k">R&eacute;sum&eacute;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- the sheet's own title block, full width, at the end of the drawing -->
+
+  <!-- selected work: the record behind a row, drawn over the sheet -->
+  <div class="wk-overlay" id="work-overlay" data-testid="work-overlay" hidden>
+    <div class="wk-backdrop" data-testid="work-backdrop"></div>
+    <aside class="wk-modal" id="work-panel" data-testid="work-panel"
+           role="dialog" aria-modal="true" aria-labelledby="wk-title" tabindex="-1"></aside>
+  </div>
+
+  <noscript><p class="noscript-note">This site draws itself with JavaScript. Please enable it.</p></noscript>
+</body>
+</html>
